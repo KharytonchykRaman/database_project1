@@ -62,7 +62,30 @@ VALUES
 (3, '2023-10-03', 75);
 
 SELECT * FROM персонал;
+
+UPDATE персонал
+SET имя = 'Петр', фамилия = 'Сидоренко'
+WHERE id = 1;
+
+SELECT * FROM персонал;
 SELECT * FROM пациенты;
 SELECT * FROM лекарства;	
 SELECT * FROM поставки;
+
+SELECT лекарства.название, поставки.количество, поставки.дата_поставки 
+FROM поставки INNER JOIN лекарства ON лекарства.id = поставки.лекарство_id;
+
+select * from лекарства where id = 1;
+
+select sum(цена) as [цена лекарств] from лекарства;
+
+select count(количество) as [количество лекарств] from лекарства;
+
+select * from лекарства where название like '%а%';
+
+SELECT название
+FROM лекарства
+WHERE цена = (SELECT MIN(цена) FROM лекарства);
+
+select * from лекарства where цена > 100;
 
